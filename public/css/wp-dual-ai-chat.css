@@ -1,0 +1,537 @@
+/**
+ * Chat interface styles for both text and voice
+ */
+/* Error Container */
+.wp-dual-ai-error-container {
+    margin: 15px;
+    padding: 10px 15px;
+    background-color: #ffebee;
+    border: 1px solid #f44336;
+    border-radius: 4px;
+    color: #d32f2f;
+    font-size: 14px;
+    text-align: center;
+}
+
+.wp-dual-ai-error-message {
+    margin: 0;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    html.dark-mode .wp-dual-ai-error-container,
+    html.dark-theme .wp-dual-ai-error-container,
+    html[data-theme="dark"] .wp-dual-ai-error-container {
+        background-color: rgba(244, 67, 54, 0.2);
+        border-color: #f44336;
+        color: #ef9a9a;
+    }
+}
+/* Chat Container */
+.wp-dual-ai-chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 360px;
+    max-width: calc(100vw - 40px);
+    height: 520px;
+    max-height: calc(100vh - 120px);
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wp-dual-ai-chat-container.wp-dual-ai-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Chat Header */
+.wp-dual-ai-chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.wp-dual-ai-chat-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #343a40;
+}
+
+.wp-dual-ai-close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.wp-dual-ai-close-button:hover {
+    color: #343a40;
+}
+
+/* Chat Area */
+.wp-dual-ai-chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wp-dual-ai-messages,
+.wp-dual-ai-transcript {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Message Styles */
+.wp-dual-ai-message {
+    margin-bottom: 16px;
+    max-width: 85%;
+    position: relative;
+}
+
+.wp-dual-ai-user-message {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.wp-dual-ai-bot-message {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.wp-dual-ai-system-message,
+.wp-dual-ai-error-message {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.wp-dual-ai-message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.wp-dual-ai-user-message .wp-dual-ai-message-content {
+    background-color: #4f46e5;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.wp-dual-ai-bot-message .wp-dual-ai-message-content {
+    background-color: #f0f2f5;
+    color: #343a40;
+    border-bottom-left-radius: 4px;
+}
+
+.wp-dual-ai-system-message .wp-dual-ai-message-content {
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.wp-dual-ai-error-message .wp-dual-ai-message-content {
+    background-color: #ffe3e3;
+    color: #e03131;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* Input Area */
+.wp-dual-ai-input-container {
+    display: flex;
+    align-items: flex-end;
+    padding: 12px 16px;
+    border-top: 1px solid #e9ecef;
+    background-color: #fff;
+    position: relative;
+}
+
+.wp-dual-ai-input {
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 24px;
+    padding: 12px 50px 12px 16px;
+    resize: none;
+    font-size: 14px;
+    line-height: 1.4;
+    max-height: 120px;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.wp-dual-ai-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+.wp-dual-ai-send-button {
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    background-color: transparent;
+    border: none;
+    color: #4f46e5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.wp-dual-ai-send-button:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+.wp-dual-ai-send-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Loading Animation */
+.wp-dual-ai-loading {
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.wp-dual-ai-loading-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.wp-dual-ai-loading-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4f46e5;
+    border-radius: 50%;
+    animation: loading-bounce 1.4s infinite ease-in-out both;
+}
+
+.wp-dual-ai-loading-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.wp-dual-ai-loading-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes loading-bounce {
+    0%, 80%, 100% { 
+        transform: scale(0);
+    }
+    40% { 
+        transform: scale(1.0);
+    }
+}
+
+/* Footer */
+.wp-dual-ai-footer {
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #6c757d;
+    border-top: 1px solid #e9ecef;
+}
+
+.wp-dual-ai-footer a {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.wp-dual-ai-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Voice Chat Specific Styles */
+.wp-dual-ai-voice-call-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    text-align: center;
+}
+
+.wp-dual-ai-voice-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.wp-dual-ai-voice-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.wp-dual-ai-voice-avatar svg {
+    width: 48px;
+    height: 48px;
+    color: #4f46e5;
+}
+
+.wp-dual-ai-voice-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.wp-dual-ai-voice-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(79, 70, 229, 0.1);
+    transform: scale(0);
+    opacity: 0;
+}
+
+.wp-dual-ai-speaking .wp-dual-ai-voice-wave:nth-child(1) {
+    animation: wave-animation 2s infinite ease-out;
+}
+
+.wp-dual-ai-speaking .wp-dual-ai-voice-wave:nth-child(2) {
+    animation: wave-animation 2s infinite ease-out 0.5s;
+}
+
+.wp-dual-ai-speaking .wp-dual-ai-voice-wave:nth-child(3) {
+    animation: wave-animation 2s infinite ease-out 1s;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.wp-dual-ai-status-text {
+    margin-bottom: 16px;
+}
+
+.wp-dual-ai-status-text p {
+    margin: 0;
+    font-size: 16px;
+    color: #343a40;
+}
+
+.wp-dual-ai-volume-indicator {
+    width: 160px;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.wp-dual-ai-volume-level {
+    height: 100%;
+    background-color: #4f46e5;
+    width: 0;
+    transition: height 0.1s ease;
+}
+
+.wp-dual-ai-volume-indicator.low .wp-dual-ai-volume-level {
+    background-color: #4dabf7;
+}
+
+.wp-dual-ai-volume-indicator.medium .wp-dual-ai-volume-level {
+    background-color: #4c6ef5;
+}
+
+.wp-dual-ai-volume-indicator.high .wp-dual-ai-volume-level {
+    background-color: #7950f2;
+}
+
+.wp-dual-ai-call-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.wp-dual-ai-call-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.wp-dual-ai-call-button:active {
+    transform: scale(0.98);
+}
+
+.wp-dual-ai-start-button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+}
+
+.wp-dual-ai-start-button:hover {
+    background-color: #4338ca;
+}
+
+.wp-dual-ai-end-button {
+    background-color: #f03e3e;
+    color: white;
+    border: none;
+}
+
+.wp-dual-ai-end-button:hover {
+    background-color: #e03131;
+}
+
+.wp-dual-ai-transcript-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+    padding-top: 8px;
+}
+
+.wp-dual-ai-transcript-container h4 {
+    margin: 8px 16px;
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Chat Buttons */
+.wp-dual-ai-chat-buttons {
+    position: fixed;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wp-dual-ai-position-bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.wp-dual-ai-position-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.wp-dual-ai-open-chat-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.wp-dual-ai-open-chat-button:hover {
+    background-color: #4338ca;
+}
+
+.wp-dual-ai-open-chat-button:active {
+    transform: scale(0.98);
+}
+
+.wp-dual-ai-open-chat-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.wp-dual-ai-voice-button {
+    background-color: #7950f2;
+}
+
+.wp-dual-ai-voice-button:hover {
+    background-color: #6741d9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .wp-dual-ai-chat-container {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        bottom: 0;
+        right: 0;
+        max-width: 100%;
+        border-radius: 0;
+    }
+    
+    .wp-dual-ai-voice-call-status {
+        padding: 16px 0;
+    }
+    
+    .wp-dual-ai-voice-avatar {
+        width: 80px;
+        height: 80px;
+    }
+}

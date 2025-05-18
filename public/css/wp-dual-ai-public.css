@@ -1,0 +1,373 @@
+/**
+ * Public-facing styles
+ */
+/* Enhanced Floating Action Button Styles */
+/* Enhanced Floating Action Button Styles with Icon Cycling */
+.wp-dual-ai-chat-buttons {
+    position: fixed;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.wp-dual-ai-position-bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.wp-dual-ai-position-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+/* Main Toggle Button */
+.wp-dual-ai-toggle-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.wp-dual-ai-toggle-button:hover {
+    background-color: #4338ca;
+    transform: scale(1.05);
+}
+
+.wp-dual-ai-toggle-button:active {
+    transform: scale(0.95);
+}
+
+/* Icon management */
+.wp-dual-ai-toggle-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.wp-dual-ai-toggle-icon.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Custom colors for each icon state */
+.wp-dual-ai-toggle-button.tree-active {
+    background-color: #10b981; /* Green for environment/tree */
+}
+
+.wp-dual-ai-toggle-button.water-active {
+    background-color: #0ea5e9; /* Blue for water */
+}
+
+.wp-dual-ai-toggle-button.industry-active {
+    background-color: #8b5cf6; /* Purple for industry */
+}
+
+.wp-dual-ai-toggle-button.open {
+    background-color: #f59e0b; /* Amber for thumbs up */
+}
+
+/* Options Container */
+.wp-dual-ai-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    bottom: 70px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Options Container when active */
+.wp-dual-ai-chat-buttons.active .wp-dual-ai-options-container {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+/* Option Buttons */
+.wp-dual-ai-option-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.wp-dual-ai-option-button:hover {
+    width: 140px;
+    border-radius: 28px;
+}
+
+.wp-dual-ai-option-button svg {
+    position: absolute;
+    left: 16px;
+    transition: left 0.3s ease;
+}
+
+.wp-dual-ai-option-button span {
+    position: absolute;
+    left: 50px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.wp-dual-ai-option-button:hover svg {
+    left: 16px;
+}
+
+.wp-dual-ai-option-button:hover span {
+    opacity: 1;
+}
+
+.wp-dual-ai-option-button:active {
+    transform: scale(0.95);
+}
+
+/* Text Chat Button */
+.wp-dual-ai-text-button {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.wp-dual-ai-text-button:hover {
+    background-color: #4338ca;
+}
+
+/* Voice Chat Button */
+.wp-dual-ai-voice-button {
+    background-color: #7950f2;
+    color: white;
+}
+
+.wp-dual-ai-voice-button:hover {
+    background-color: #6741d9;
+}
+
+/* Animation for the toggle */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}
+
+.wp-dual-ai-toggle-button.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Icon cycling animations */
+@keyframes iconSwing {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.wp-dual-ai-toggle-icon.active {
+    animation: iconSwing 2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .wp-dual-ai-chat-buttons {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .wp-dual-ai-option-button:hover {
+        width: 56px;
+    }
+    
+    .wp-dual-ai-option-button span {
+        display: none;
+    }
+}
+/* Reset some basic elements */
+.wp-dual-ai-container * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Base container styles */
+.wp-dual-ai-container {
+    width: 100%;
+}
+
+/* Utility classes */
+.wp-dual-ai-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* WooCommerce product integration */
+.woocommerce div.product .wp-dual-ai-container {
+    margin-top: 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.wp-dual-ai-fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Accessibility focus styles */
+.wp-dual-ai-container button:focus,
+.wp-dual-ai-container a:focus,
+.wp-dual-ai-container input:focus,
+.wp-dual-ai-container textarea:focus {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* Dark mode support if site has it enabled */
+@media (prefers-color-scheme: dark) {
+    html.dark-mode .wp-dual-ai-chat-container,
+    html.dark-theme .wp-dual-ai-chat-container,
+    html[data-theme="dark"] .wp-dual-ai-chat-container {
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-chat-header,
+    html.dark-theme .wp-dual-ai-chat-header,
+    html[data-theme="dark"] .wp-dual-ai-chat-header {
+        background-color: #2d2d2d;
+        border-bottom-color: #3d3d3d;
+    }
+    
+    html.dark-mode .wp-dual-ai-chat-header h3,
+    html.dark-theme .wp-dual-ai-chat-header h3,
+    html[data-theme="dark"] .wp-dual-ai-chat-header h3 {
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-close-button,
+    html.dark-theme .wp-dual-ai-close-button,
+    html[data-theme="dark"] .wp-dual-ai-close-button {
+        color: #a0a0a0;
+    }
+    
+    html.dark-mode .wp-dual-ai-close-button:hover,
+    html.dark-theme .wp-dual-ai-close-button:hover,
+    html[data-theme="dark"] .wp-dual-ai-close-button:hover {
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-input-container,
+    html.dark-theme .wp-dual-ai-input-container,
+    html[data-theme="dark"] .wp-dual-ai-input-container {
+        background-color: #1e1e1e;
+        border-top-color: #3d3d3d;
+    }
+    
+    html.dark-mode .wp-dual-ai-input,
+    html.dark-theme .wp-dual-ai-input,
+    html[data-theme="dark"] .wp-dual-ai-input {
+        background-color: #2d2d2d;
+        border-color: #3d3d3d;
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-bot-message .wp-dual-ai-message-content,
+    html.dark-theme .wp-dual-ai-bot-message .wp-dual-ai-message-content,
+    html[data-theme="dark"] .wp-dual-ai-bot-message .wp-dual-ai-message-content {
+        background-color: #2d2d2d;
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-system-message .wp-dual-ai-message-content,
+    html.dark-theme .wp-dual-ai-system-message .wp-dual-ai-message-content,
+    html[data-theme="dark"] .wp-dual-ai-system-message .wp-dual-ai-message-content {
+        background-color: #3d3d3d;
+        color: #c0c0c0;
+    }
+    
+    html.dark-mode .wp-dual-ai-footer,
+    html.dark-theme .wp-dual-ai-footer,
+    html[data-theme="dark"] .wp-dual-ai-footer {
+        border-top-color: #3d3d3d;
+        color: #a0a0a0;
+    }
+    
+    html.dark-mode .wp-dual-ai-voice-avatar,
+    html.dark-theme .wp-dual-ai-voice-avatar,
+    html[data-theme="dark"] .wp-dual-ai-voice-avatar {
+        background-color: #2d2d2d;
+    }
+    
+    html.dark-mode .wp-dual-ai-voice-avatar-inner,
+    html.dark-theme .wp-dual-ai-voice-avatar-inner,
+    html[data-theme="dark"] .wp-dual-ai-voice-avatar-inner {
+        background-color: #3d3d3d;
+    }
+    
+    html.dark-mode .wp-dual-ai-status-text p,
+    html.dark-theme .wp-dual-ai-status-text p,
+    html[data-theme="dark"] .wp-dual-ai-status-text p {
+        color: #f0f0f0;
+    }
+    
+    html.dark-mode .wp-dual-ai-volume-indicator,
+    html.dark-theme .wp-dual-ai-volume-indicator,
+    html[data-theme="dark"] .wp-dual-ai-volume-indicator {
+        background-color: #3d3d3d;
+    }
+    
+    html.dark-mode .wp-dual-ai-transcript-container,
+    html.dark-theme .wp-dual-ai-transcript-container,
+    html[data-theme="dark"] .wp-dual-ai-transcript-container {
+        border-top-color: #3d3d3d;
+    }
+    
+    html.dark-mode .wp-dual-ai-transcript-container h4,
+    html.dark-theme .wp-dual-ai-transcript-container h4,
+    html[data-theme="dark"] .wp-dual-ai-transcript-container h4 {
+        color: #c0c0c0;
+    }
+}
