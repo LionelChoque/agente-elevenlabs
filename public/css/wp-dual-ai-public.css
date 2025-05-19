@@ -512,9 +512,6 @@
     height: 480px !important;
 }
 
-
-/* Add this CSS to your public/css/wp-dual-ai-public.css file */
-
 /* Hide transcript container and footer */
 .wp-dual-ai-transcript-container,
 .wp-dual-ai-footer {

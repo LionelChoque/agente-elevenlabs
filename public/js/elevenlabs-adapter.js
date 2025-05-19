@@ -4,7 +4,7 @@
  * Este adaptador proporciona una interfaz unificada para cargar e inicializar
  * el SDK de ElevenLabs, ya sea desde el archivo local o desde CDN como fallback.
  * 
- * @since      1.1.0
+ * @since      1.9.0
  * @package    WP_Dual_AI_Assistant
  */
 

@@ -466,7 +466,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Register AJAX hooks for the admin area.
      * 
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function register_ajax_hooks() {
         // Original AJAX handler
@@ -485,7 +485,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Test Anthropic API connection.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function test_anthropic_connection() {
         // Verify nonce
@@ -522,7 +522,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Test ElevenLabs API connection.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function test_elevenlabs_connection() {
         // Verify nonce
@@ -599,7 +599,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Refresh dashboard data via AJAX.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function refresh_dashboard_data() {
         // Verify nonce
@@ -644,7 +644,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Get date filter for SQL queries.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @param    string    $date_range    Selected date range.
      * @param    string    $start_date    Custom start date.
      * @param    string    $end_date      Custom end date.
@@ -703,7 +703,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Get dashboard metrics.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @param    array    $date_filter    SQL WHERE clause and parameters.
      * @return   array    Dashboard metrics.
      */
@@ -768,7 +768,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Get previous period data for comparison.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @param    array    $current_filter    Current date filter.
      * @return   int      Count from previous period.
      */
@@ -818,7 +818,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * Get chart data.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @param    array     $date_filter    SQL WHERE clause and parameters.
      * @param    string    $view           Chart view (daily/weekly).
      * @return   array     Chart data.
@@ -913,7 +913,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * AJAX handler for getting chart data.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function get_chart_data_ajax() {
         // Verify nonce
@@ -944,7 +944,7 @@ public function elevenlabs_ringtone_callback() {
     /**
      * AJAX handler for checking system status.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      */
     public function check_system_status() {
         // Verify nonce

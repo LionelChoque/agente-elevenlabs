@@ -21,7 +21,7 @@ class WP_Dual_AI_Anthropic {
     /**
      * The API version for Anthropic.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @access   private
      * @var      string    $api_version    The API version to use.
      */
@@ -30,7 +30,7 @@ class WP_Dual_AI_Anthropic {
     /**
      * Debug mode flag.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @access   private
      * @var      boolean    $debug_mode    Whether to enable debug logging.
      */
@@ -51,7 +51,7 @@ class WP_Dual_AI_Anthropic {
     /**
      * Log debug information if debug mode is enabled.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @access   private
      * @param    string    $message    Debug message.
      * @param    array     $data       Optional data to log.
@@ -89,7 +89,7 @@ class WP_Dual_AI_Anthropic {
     /**
      * Test connection to the Anthropic API.
      *
-     * @since    1.1.0
+     * @since    1.9.0
      * @param    string    $api_key    Optional API key to test. If not provided, will use the saved one.
      * @return   array|WP_Error       Result of the test or error.
      */

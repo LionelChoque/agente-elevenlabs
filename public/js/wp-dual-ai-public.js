@@ -218,7 +218,7 @@ function addWelcomeBubble() {
     `;
     
     // Find the chat buttons container - using more robust selector
-    const chatButtons = document.querySelector('.wp-dual-ai-chat-buttons, #dual-ai-toggle');
+    const chatButtons = document.querySelector('.wp-dual-ai-chat-buttons, [aria-label="Abrir chat"]');
     if (chatButtons) {
         chatButtons.appendChild(bubble);
         

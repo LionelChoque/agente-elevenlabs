@@ -1,6 +1,6 @@
 {
   "name": "wp-dual-ai-assistant",
-  "version": "1.1.0",
+  "version": "1.9.0",
   "description": "WordPress plugin for AI assistance via Anthropic text chat and ElevenLabs voice chat",
   "author": "Your Name",
   "license": "GPL-2.0-or-later",

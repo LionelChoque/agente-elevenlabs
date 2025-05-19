@@ -2,7 +2,7 @@
 /**
  * Provide a admin area view for the plugin dashboard
  *
- * @since      1.1.0
+ * @since      1.9.0
  * @package    WP_Dual_AI_Assistant
  * @subpackage WP_Dual_AI_Assistant/admin/partials
  */
