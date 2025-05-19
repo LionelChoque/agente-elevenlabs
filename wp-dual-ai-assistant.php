@@ -3,7 +3,7 @@
  * Plugin Name: Dual AI Assistant
  * Plugin URI: https://yourwebsite.com/dual-ai-assistant
  * Description: Advanced WordPress plugin that integrates Anthropic text-based AI chat and ElevenLabs voice-based AI interaction.
- * Version: 1.9.0
+ * Version: 2.0.0
  * Author: Your Name
  * Author URI: https://yourwebsite.com
  * License: GPL-2.0+

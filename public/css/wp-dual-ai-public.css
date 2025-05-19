@@ -511,3 +511,95 @@
     width: 320px !important;
     height: 480px !important;
 }
+
+
+/* Add this CSS to your public/css/wp-dual-ai-public.css file */
+
+/* Hide transcript container and footer */
+.wp-dual-ai-transcript-container,
+.wp-dual-ai-footer {
+    display: none !important;
+}
+
+/* Reduce size of chat containers */
+#wp-dual-ai-voice-chat-container,
+#wp-dual-ai-text-chat-container {
+    width: 280px !important; /* More narrow */
+    height: 420px !important; /* Shorter */
+    max-height: 80vh !important; /* Responsive height */
+}
+
+/* Increase available space for chat area */
+.wp-dual-ai-voice-call-status {
+    padding: 16px 0 !important;
+}
+
+/* Ensure proper spacing at the bottom without footer */
+.wp-dual-ai-call-controls {
+    margin-bottom: 0 !important;
+    padding-bottom: 16px !important;
+}
+
+/* Add subtle border to replace visual separation previously provided by footer */
+.wp-dual-ai-chat {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Make sure speech bubbles have enough space */
+.wp-dual-ai-messages {
+    padding-bottom: 16px !important;
+}
+
+/* Enhanced welcome bubble styling to ensure visibility */
+.wp-dual-ai-welcome-bubble {
+    position: absolute !important;
+    bottom: 80px !important;
+    right: 10px !important;
+    background-color: white !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    max-width: 220px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 9998 !important;
+    animation: bubbleAppear 0.5s ease !important;
+    border: 1px solid #e1e1e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.wp-dual-ai-welcome-bubble p {
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: #333 !important;
+}
+
+/* Force bubble arrow to show */
+.wp-dual-ai-welcome-bubble:after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -10px !important;
+    right: 30px !important;
+    border-width: 10px 10px 0 !important;
+    border-style: solid !important;
+    border-color: white transparent transparent !important;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1)) !important;
+    display: block !important;
+}
+
+/* Animation to make bubble appear with attention-grabbing effect */
+@keyframes bubbleAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+    70% {
+        transform: translateY(-2px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
