@@ -203,3 +203,49 @@
     });
 
 })(jQuery);
+// Función para añadir el globo de diálogo de bienvenida
+function addWelcomeBubble() {
+    // Verificar si ya existe el elemento
+    if (document.querySelector('.wp-dual-ai-welcome-bubble')) return;
+    
+    // Crear el elemento del globo
+    const bubble = document.createElement('div');
+    bubble.className = 'wp-dual-ai-welcome-bubble';
+    bubble.innerHTML = `
+        <button class="wp-dual-ai-welcome-bubble-close">×</button>
+        <p class="wp-dual-ai-welcome-bubble-text">Hola, puedo ayudarte? Soy tu asistente.</p>
+    `;
+    
+    // Añadir el globo cerca del botón flotante
+    const chatButtons = document.querySelector('.wp-dual-ai-chat-buttons');
+    if (chatButtons) {
+        chatButtons.appendChild(bubble);
+        
+        // Añadir evento para cerrar el globo
+        const closeButton = bubble.querySelector('.wp-dual-ai-welcome-bubble-close');
+        closeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            bubble.remove();
+            
+            // Guardar en localStorage para que no aparezca de nuevo en esta sesión
+            localStorage.setItem('wp_dual_ai_bubble_closed', 'true');
+        });
+        
+        // Cerrar al hacer clic en cualquier lugar fuera
+        document.addEventListener('click', function(e) {
+            if (!bubble.contains(e.target) && !chatButtons.querySelector('#dual-ai-toggle').contains(e.target)) {
+                bubble.remove();
+            }
+        });
+    }
+}
+
+// Añadir el globo cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar solo si no ha sido cerrado antes
+    if (!localStorage.getItem('wp_dual_ai_bubble_closed')) {
+        // Pequeño retraso para que aparezca después de la carga inicial
+        setTimeout(addWelcomeBubble, 1500);
+    }
+});
